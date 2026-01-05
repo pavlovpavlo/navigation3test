@@ -13,8 +13,7 @@ class ProductDetailsViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ) : BaseViewModel<ProductDetailsState, ProductDetailsEffect>(ProductDetailsState()) {
 
-    init {
-        val productId = savedStateHandle.get<String>("productId") ?: ""
+    fun setProductId(productId: String){
         publishState { copy(productId = productId, title = "Details: $productId") }
     }
 

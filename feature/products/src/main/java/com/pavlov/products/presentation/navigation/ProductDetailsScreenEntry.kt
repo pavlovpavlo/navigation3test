@@ -15,10 +15,15 @@ import com.pavlov.products.presentation.mvi.ProductDetailsEffect
 fun ProductDetailsScreenEntry(
     navigationCoordinator: NavigationCoordinator,
     viewModelProvider: @Composable () -> ProductDetailsViewModel,
-    paddingValues: PaddingValues
+    paddingValues: PaddingValues,
+    productId: String
 ) {
     val viewModel = viewModelProvider()
     val state by viewModel.uiState.collectAsStateWithLifecycle()
+
+    LaunchedEffect(productId) {
+        viewModel.setProductId(productId)
+    }
 
     LaunchedEffect(Unit) {
         viewModel.uiEffect.collect { effect ->

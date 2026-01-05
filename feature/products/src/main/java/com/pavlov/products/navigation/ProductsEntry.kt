@@ -14,8 +14,9 @@ fun EntryProviderScope<NavKey>.featureProductsBuilder(
     productDetailsViewModelProvider: @Composable () -> ProductDetailsViewModel,
     paddingValues: PaddingValues
 ) {
-    entry<ProductDetailsKey> {
-        ProductDetailsScreenEntry(navigationCoordinator, productDetailsViewModelProvider, paddingValues)
+    entry<ProductDetailsKey> {key ->
+        ProductDetailsScreenEntry(navigationCoordinator, productDetailsViewModelProvider, paddingValues,
+            productId = key.productId)
     }
 }
 
